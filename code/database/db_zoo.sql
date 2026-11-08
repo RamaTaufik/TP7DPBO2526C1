@@ -16,7 +16,7 @@ CREATE TABLE animals (
 );
 
 CREATE TABLE enclosures (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id VARCHAR(100) PRIMARY KEY,
   `size` INT DEFAULT(0),
   water_level ENUM('none', 'ground', 'submerged') NULL DEFAULT('none'),
   water_type ENUM('none', 'salt-water', 'fresh-water', 'brackish-water') NULL DEFAULT('none'),
@@ -29,7 +29,7 @@ CREATE TABLE enclosures (
 );
 
 CREATE TABLE enclosure_animals (
-  enclosure_id INT NOT NULL,
+  enclosure_id VARCHAR(100) NOT NULL,
   animal_id INT NOT NULL,
   `number` INT NOT NULL DEFAULT(0),
   FOREIGN KEY(enclosure_id) REFERENCES enclosures(id),
@@ -87,40 +87,40 @@ INSERT INTO animals(id, `name`, scientific_name, `desc`, category_id) VALUES
   (22, 'Barramundi', 'Lates calcarifer', 'Large catadromous fish found in coastal waters, estuaries, and river mouths.', 8);
 
 INSERT INTO enclosures(id, `size`, water_level, water_type, sun_exposure, vegetation, `security`, is_indoor, `status`, last_maintained_at) VALUES
-  (99, 0, 'none', 'none', 'low', 'low', 'low', 1, 'closed', '0001-01-01'),
-  (1, 220, 'none', 'none', 'high', 'moderate', 'low', 0, 'public', NULL),
-  (2, 180, 'none', 'none', 'high', 'moderate', 'high', 0, 'public', NULL),
-  (3, 200, 'none', 'none', 'high', 'moderate', 'high', 0, 'public', NULL),
-  (4, 35, 'none', 'none', 'low', 'low', 'moderate', 1, 'public', NULL),
-  (5, 16, 'none', 'none', 'moderate', 'high', 'low', 1, 'public', NULL),
-  (6, 20, 'ground', 'fresh-water', 'moderate', 'high', 'low', 1, 'public', NULL),
-  (7, 24, 'none', 'none', 'moderate', 'moderate', 'moderate', 1, 'public', NULL),
-  (8, 48, 'ground', 'salt-water', 'low', 'low', 'moderate', 1, 'public', NULL),
-  (9, 105, 'submerged', 'salt-water', 'low', 'moderate', 'low', 1, 'public', NULL),
-  (10, 20, 'submerged', 'fresh-water', 'low', 'moderate', 'moderate', 1, 'public', NULL),
-  (11, 70, 'submerged', 'fresh-water', 'low', 'moderate', 'low', 1, 'public', NULL),
-  (12, 25, 'ground', 'brackish-water', 'high', 'high', 'low', 0, 'public', NULL);
+  ('??-???', 0, 'none', 'none', 'low', 'low', 'low', 1, 'closed', '0001-01-01'),
+  ('GO-001', 220, 'none', 'none', 'high', 'moderate', 'low', 0, 'public', NULL),
+  ('GO-002', 180, 'none', 'none', 'high', 'moderate', 'high', 0, 'public', NULL),
+  ('GO-003', 200, 'none', 'none', 'high', 'moderate', 'high', 0, 'public', NULL),
+  ('GC-001', 35, 'none', 'none', 'low', 'low', 'moderate', 1, 'public', NULL),
+  ('GC-002', 16, 'none', 'none', 'moderate', 'high', 'low', 1, 'public', NULL),
+  ('GC-003', 20, 'ground', 'fresh-water', 'moderate', 'high', 'low', 1, 'public', NULL),
+  ('GC-004', 24, 'none', 'none', 'moderate', 'moderate', 'moderate', 1, 'public', NULL),
+  ('GS-001', 48, 'ground', 'salt-water', 'low', 'low', 'moderate', 1, 'public', NULL),
+  ('AS-001', 105, 'submerged', 'salt-water', 'low', 'moderate', 'low', 1, 'public', NULL),
+  ('AF-001', 20, 'submerged', 'fresh-water', 'low', 'moderate', 'moderate', 1, 'public', NULL),
+  ('AF-002', 70, 'submerged', 'fresh-water', 'low', 'moderate', 'low', 1, 'public', NULL),
+  ('GB-001', 25, 'ground', 'brackish-water', 'high', 'high', 'low', 1, 'public', NULL);
 
 INSERT INTO enclosure_animals(enclosure_id, animal_id, `number`) VALUES
-  (99, 1, 1),
-  (99, 9, 1),
-  (1, 3, 7),
-  (2, 2, 15),
-  (3, 4, 6),
-  (4, 5, 4),
-  (5, 6, 19),
-  (5, 7, 14),
-  (6, 8, 10),
-  (6, 12, 8),
-  (6, 13, 9),
-  (7, 10, 5),
-  (8, 11, 12),
-  (9, 14, 19),
-  (9, 15, 23),
-  (9, 16, 8),
-  (10, 17, 17),
-  (11, 18, 5),
-  (11, 19, 7),
-  (12, 20, 25),
-  (12, 21, 18),
-  (12, 22, 12);
+  ('??-???', 1, 1),
+  ('??-???', 9, 1),
+  ('GO-001', 3, 7),
+  ('GO-002', 2, 15),
+  ('GO-003', 4, 6),
+  ('GC-001', 5, 4),
+  ('GC-002', 6, 19),
+  ('GC-002', 7, 14),
+  ('GC-003', 8, 10),
+  ('GC-003', 12, 8),
+  ('GC-003', 13, 9),
+  ('GC-004', 10, 5),
+  ('GS-001', 11, 12),
+  ('AS-001', 14, 19),
+  ('AS-001', 15, 23),
+  ('AS-001', 16, 8),
+  ('AF-001', 17, 17),
+  ('Af-002', 18, 5),
+  ('AF-002', 19, 7),
+  ('GB-001', 20, 25),
+  ('GB-001', 21, 18),
+  ('GB-001', 22, 12);
