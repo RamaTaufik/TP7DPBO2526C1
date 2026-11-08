@@ -78,6 +78,10 @@ nav a:hover {
     color: #fff;
 }
 
+nav span {
+    color: #357abd;
+}
+
 /* Main Content */
 main {
     padding: 40px;
@@ -91,6 +95,10 @@ h2, h3 {
     font-weight: 600;
     border-bottom: 3px solid #4a90e2;
     padding-bottom: 10px;
+}
+
+.title {
+    margin-top: 20px;
 }
 
 /* Tables */
