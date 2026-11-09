@@ -3,11 +3,26 @@ require_once 'classes/Category.php';
 require_once 'classes/Animal.php';
 require_once 'classes/Enclosure.php';
 require_once 'classes/EnclosureAnimal.php';
+require_once 'helpers.php';
 
 $category = new Category();
 $animal = new Animal();
 $enclosure = new Enclosure();
 $enclosure_animal = new EnclosureAnimal();
+
+if(isset($_GET['update-id'])) {
+  if($_GET['page'] == 'categories') {
+    $upd_category = $category->getOne($_GET['update-id']);
+  }
+}
+
+if(isset($_POST['create-category'])) {
+  $category->create($_POST['id'], $_POST['name']);
+} elseif(isset($_POST['delete-category'])) {
+  $category->delete($_POST['id']);
+} elseif(isset($_POST['update-category'])) {
+  $category->update($_GET['update-id'], $_POST['id'], $_POST['name']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +33,16 @@ $enclosure_animal = new EnclosureAnimal();
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <?php
+  $e = flash('status');
+
+  if($e != NULL) {
+  ?>
+  <div class="alert alert-<?= $e['type'] ?>" onclick="this.style.display = 'none'">
+    <h3 class="text-<?= $e['type'] ?>"><?= strtoupper($e['type']) ?></h3>
+    <?= $e['message'] ?>
+  </div>
+  <?php } ?>
   <?php include 'views/header.php'; ?>
   <main>
     <h2>Welcome to Zoo Management System</h2>
