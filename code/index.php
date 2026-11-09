@@ -13,6 +13,8 @@ $enclosure_animal = new EnclosureAnimal();
 if(isset($_GET['update-id'])) {
   if($_GET['page'] == 'categories') {
     $upd_category = $category->getOne($_GET['update-id']);
+  } elseif($_GET['page'] == 'animals') {
+    $upd_animal = $animal->getOne($_GET['update-id']);
   }
 }
 
@@ -22,6 +24,13 @@ if(isset($_POST['create-category'])) {
   $category->delete($_POST['id']);
 } elseif(isset($_POST['update-category'])) {
   $category->update($_GET['update-id'], $_POST['id'], $_POST['name']);
+}
+if(isset($_POST['create-animal'])) {
+  $animal->create($_POST['id'], $_POST['name'], $_POST['scientific-name'], $_POST['category-id'], $_POST['desc']);
+} elseif(isset($_POST['delete-animal'])) {
+  $animal->delete($_POST['id']);
+} elseif(isset($_POST['update-animal'])) {
+  $animal->update($_GET['update-id'], $_POST['id'], $_POST['name'], $_POST['scientific-name'], $_POST['category-id'], $_POST['desc']);
 }
 ?>
 
