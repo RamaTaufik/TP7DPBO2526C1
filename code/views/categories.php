@@ -4,7 +4,7 @@
   <input type="number" name="id" id="id" <?= isset($upd_category)? 'value="'.$upd_category["id"].'"': '' ?> required>
   <label>Name</label>
   <input type="text" name="name" id="name" <?= isset($upd_category)? 'value="'.$upd_category["name"].'"': '' ?> required>
-  <button type="submit" name="<?=  isset($_GET['update-id'])? 'update': 'create' ?>-category">Create</button>
+  <button type="submit" name="<?=  isset($_GET['update-id'])? 'update': 'create' ?>-category">Submit</button>
 </form>
 
 <h3 class="title">Category List</h3>
