@@ -152,7 +152,7 @@ tbody tr:hover {
     border-radius: 5px;
 }
 
-input, select, textarea {
+input:not([type="checkbox"]), select, textarea {
     width: 100%;
     padding: 12px 15px;
     margin: 8px 0 15px 0;

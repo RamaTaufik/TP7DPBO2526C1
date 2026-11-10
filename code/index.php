@@ -15,6 +15,8 @@ if(isset($_GET['update-id'])) {
     $upd_category = $category->getOne($_GET['update-id']);
   } elseif($_GET['page'] == 'animals') {
     $upd_animal = $animal->getOne($_GET['update-id']);
+  } elseif($_GET['page'] == 'enclosures') {
+    $upd_enclosure = $enclosure->getOne($_GET['update-id']);
   }
 }
 
@@ -31,6 +33,36 @@ if(isset($_POST['create-animal'])) {
   $animal->delete($_POST['id']);
 } elseif(isset($_POST['update-animal'])) {
   $animal->update($_GET['update-id'], $_POST['id'], $_POST['name'], $_POST['scientific-name'], $_POST['category-id'], $_POST['desc']);
+}
+if(isset($_POST['create-enclosure'])) {
+  $enclosure->create(
+    $_POST['sun-exposure'] ?? '',
+    $_POST['vegetation'] ?? '',
+    $_POST['security'] ?? '',
+    $_POST['last-maintained-at'] ?? '',
+    isset($_POST['size-null']) ? '__null__' : ($_POST['size'] ?? ''),
+    $_POST['water-level'] ?? '',
+    $_POST['water-type'] ?? '',
+    $_POST['is-indoor'] ?? '',
+    $_POST['id'],
+    $_POST['status']
+  );
+} elseif(isset($_POST['delete-enclosure'])) {
+  $enclosure->delete($_POST['id']);
+} elseif(isset($_POST['update-enclosure'])) {
+  $enclosure->update(
+    $_GET['update-id'],
+    $_POST['sun-exposure'] ?? '',
+    $_POST['vegetation'] ?? '',
+    $_POST['security'] ?? '',
+    $_POST['last-maintained-at'] ?? '',
+    isset($_POST['size-null']) ? '__null__' : ($_POST['size'] ?? ''),
+    $_POST['water-level'] ?? '',
+    $_POST['water-type'] ?? '',
+    $_POST['is-indoor'] ?? '',
+    $_POST['id'],
+    $_POST['status']
+  );
 }
 ?>
 
