@@ -29,6 +29,7 @@ CREATE TABLE enclosures (
 );
 
 CREATE TABLE enclosure_animals (
+  id INT AUTO_INCREMENT PRIMARY KEY,
   enclosure_id VARCHAR(100) NOT NULL,
   animal_id INT NOT NULL,
   `number` INT NOT NULL DEFAULT(0),
@@ -101,26 +102,26 @@ INSERT INTO enclosures(id, `size`, water_level, water_type, sun_exposure, vegeta
   ('AF-002', 70, 'submerged', 'fresh-water', 'low', 'moderate', 'low', 1, 'public', NULL),
   ('GB-001', 25, 'ground', 'brackish-water', 'high', 'high', 'low', 1, 'public', NULL);
 
-INSERT INTO enclosure_animals(enclosure_id, animal_id, `number`) VALUES
-  ('??-???', 1, 1),
-  ('??-???', 9, 1),
-  ('GO-001', 3, 7),
-  ('GO-002', 2, 15),
-  ('GO-003', 4, 6),
-  ('GC-001', 5, 4),
-  ('GC-002', 6, 19),
-  ('GC-002', 7, 14),
-  ('GC-003', 8, 10),
-  ('GC-003', 12, 8),
-  ('GC-003', 13, 9),
-  ('GC-004', 10, 5),
-  ('GS-001', 11, 12),
-  ('AS-001', 14, 19),
-  ('AS-001', 15, 23),
-  ('AS-001', 16, 8),
-  ('AF-001', 17, 17),
-  ('Af-002', 18, 5),
-  ('AF-002', 19, 7),
-  ('GB-001', 20, 25),
-  ('GB-001', 21, 18),
-  ('GB-001', 22, 12);
+INSERT INTO enclosure_animals(id, enclosure_id, animal_id, `number`) VALUES
+  (1, '??-???', 1, 1),
+  (2, '??-???', 9, 1),
+  (3, 'GO-001', 3, 7),
+  (4, 'GO-002', 2, 15),
+  (5, 'GO-003', 4, 6),
+  (6, 'GC-001', 5, 4),
+  (7, 'GC-002', 6, 19),
+  (8, 'GC-002', 7, 14),
+  (9, 'GC-003', 8, 10),
+  (10, 'GC-003', 12, 8),
+  (11, 'GC-003', 13, 9),
+  (12, 'GC-004', 10, 5),
+  (13, 'GS-001', 11, 12),
+  (14, 'AS-001', 14, 19),
+  (15, 'AS-001', 15, 23),
+  (16, 'AS-001', 16, 8),
+  (17, 'AF-001', 17, 17),
+  (18, 'Af-002', 18, 5),
+  (19, 'AF-002', 19, 7),
+  (20, 'GB-001', 20, 25),
+  (21, 'GB-001', 21, 18),
+  (22, 'GB-001', 22, 12);
