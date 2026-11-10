@@ -17,6 +17,8 @@ if(isset($_GET['update-id'])) {
     $upd_animal = $animal->getOne($_GET['update-id']);
   } elseif($_GET['page'] == 'enclosures') {
     $upd_enclosure = $enclosure->getOne($_GET['update-id']);
+  } elseif($_GET['page'] == 'enclosure-animals') {
+    $upd_enclosure_animal = $enclosure_animal->getOne($_GET['update-id']);
   }
 }
 
@@ -64,6 +66,19 @@ if(isset($_POST['create-enclosure'])) {
     $_POST['status']
   );
 }
+if(isset($_POST['create-enclosure-animal'])) {
+  $enclosure_animal->create($_POST['id'], $_POST['enclosure_id'], $_POST['animal_id'], $_POST['number']);
+} elseif(isset($_POST['delete-enclosure-animal'])) {
+  $enclosure_animal->delete($_POST['id']);
+} elseif(isset($_POST['update-enclosure-animal'])) {
+  $enclosure_animal->update(
+    $_GET['update-id'],
+    $_POST['id'],
+    $_POST['enclosure_id'],
+    $_POST['animal_id'],
+    $_POST['number']
+  );
+}
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +106,7 @@ if(isset($_POST['create-enclosure'])) {
       <a href="?page=categories">Categories</a><span>|</span>
       <a href="?page=animals">Animals</a><span>|</span>
       <a href="?page=enclosures">Enclosures</a><span>|</span>
-      <a href="?page=animals-enclosures">Animals in Enclosures</a>
+      <a href="?page=enclosure-animals">Animals in Enclosures</a>
     </nav>
 
     <?php
@@ -101,7 +116,7 @@ if(isset($_POST['create-enclosure'])) {
       if($page == 'categories') include 'views/categories.php';
       elseif($page == 'animals') include 'views/animals.php';
       elseif($page == 'enclosures') include 'views/enclosures.php';
-      elseif($page == 'animals-enclosures') include 'views/animals-enclosures.php';
+      elseif($page == 'enclosure-animals') include 'views/enclosure-animals.php';
     }
     ?>
   </main>
